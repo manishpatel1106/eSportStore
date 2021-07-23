@@ -1,0 +1,72 @@
+﻿@model SportsStore.Domain.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "SportStore: Checkout";
+}
+
+<h2>Checkout now</h2>
+<p>Please enter your details, and we'll ship your goods right away</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+        <h4>Ship to</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label>Name:</label>
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        </div>
+
+        <h3>Address</h3>
+        <div class="form-group">
+            <label>Line1:</label>
+            @Html.TextBoxFor(model => model.Line1, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Line2:</label>
+            @Html.TextBoxFor(model => model.Line2, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Line3:</label>
+            @Html.TextBoxFor(model => model.Line3, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>City:</label>
+            @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>State:</label>
+            @Html.TextBoxFor(model => model.State, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Zip:</label>
+            @Html.TextBoxFor(model => model.Zip, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Country:</label>
+            @Html.TextBoxFor(model => model.Country, new { @class = "form-control" })
+        </div>
+
+            <h3>Options</h3>
+            <div class="checkbox">
+                <label>
+                    @Html.EditorFor(model => model.GiftWrap)
+                    Gift wrap these items
+                </label>
+            </div>
+
+            <div class="text-center">
+                <input type="submit" value="Complete order" class="btn btn-primary" />
+            </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
